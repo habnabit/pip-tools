@@ -155,4 +155,5 @@ class DependencyCache(object):
         # ('flake8', 'mccabe'), ...]
         return lookup_table((Requirement.parse(dep_name).key, name)
                             for name, version_and_extras in cache_keys
-                            for dep_name in self[(name, version_and_extras)])
+                            for dep_name in (
+                                self.cache[name][version_and_extras]))
